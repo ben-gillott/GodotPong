@@ -1,0 +1,156 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scenes/Paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Player1.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Manager.gd" type="Script" id=5]
+[ext_resource path="res://Art/Retroville NC.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/AIPaddle.gd" type="Script" id=7]
+[ext_resource path="res://Sound/Kevin MacLeod Bit Bit Loop.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Sound/Hit.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sound/Score.wav" type="AudioStream" id=10]
+[ext_resource path="res://Scripts/CameraShake.gd" type="Script" id=11]
+[ext_resource path="res://Art/retro.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Scenes/AIPaddle.tscn" type="PackedScene" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 6 )
+
+[node name="PlayScene" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -270.0
+margin_top = -235.0
+margin_right = 1299.0
+margin_bottom = 876.0
+color = Color( 0.227451, 0.223529, 0.223529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 11 )
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+
+[node name="Player1" type="Node2D" parent="."]
+position = Vector2( 995.112, 283.978 )
+script = ExtResource( 2 )
+
+[node name="Paddle" parent="Player1" instance=ExtResource( 1 )]
+scale = Vector2( 10, 50 )
+
+[node name="Player2" type="Node2D" parent="."]
+position = Vector2( 24.6398, 286.388 )
+script = ExtResource( 7 )
+
+[node name="AIPaddle" parent="Player2" instance=ExtResource( 13 )]
+scale = Vector2( 10, 40 )
+
+[node name="WallTop" parent="." instance=ExtResource( 4 )]
+position = Vector2( 503.752, 9.86806 )
+scale = Vector2( 60, 1 )
+
+[node name="WallBot" parent="." instance=ExtResource( 4 )]
+position = Vector2( 517.677, 592.252 )
+scale = Vector2( 60, 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P1ScoreLabel" type="Label" parent="Control"]
+margin_left = 532.221
+margin_top = 207.117
+margin_right = 981.221
+margin_bottom = 371.117
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2ScoreLabel" type="Label" parent="Control"]
+margin_left = 37.5267
+margin_top = 209.896
+margin_right = 486.527
+margin_bottom = 373.896
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverUI" type="Control" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Win" type="Label" parent="Control/GameOverUI"]
+visible = false
+margin_left = 241.631
+margin_top = 71.8772
+margin_right = 781.631
+margin_bottom = 235.877
+custom_fonts/font = SubResource( 1 )
+text = "You Win!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lose" type="Label" parent="Control/GameOverUI"]
+visible = false
+margin_left = 241.631
+margin_top = 76.0943
+margin_right = 781.631
+margin_bottom = 240.094
+custom_fonts/font = SubResource( 1 )
+text = "You Lose"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="Control/GameOverUI"]
+visible = false
+margin_left = 347.24
+margin_top = 384.0
+margin_right = 662.24
+margin_bottom = 448.0
+custom_fonts/font = ExtResource( 12 )
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 8 )
+volume_db = -18.0
+autoplay = true
+
+[node name="Hit" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="Score" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 10 )
+volume_db = -1.0

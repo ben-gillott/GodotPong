@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Art/retro.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/StartMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/MenuBall.tscn" type="PackedScene" id=4]
+
+[node name="StartMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="WallTop" parent="Node2D" instance=ExtResource( 3 )]
+position = Vector2( 504.744, 10.8603 )
+scale = Vector2( 60, 1 )
+
+[node name="WallBot" parent="Node2D" instance=ExtResource( 3 )]
+position = Vector2( 488.696, 591.981 )
+scale = Vector2( 60, 1 )
+
+[node name="WallLeft" parent="Node2D" instance=ExtResource( 3 )]
+position = Vector2( 8.23654, 273.44 )
+rotation = 1.5708
+scale = Vector2( 60, 1 )
+
+[node name="WallRight" parent="Node2D" instance=ExtResource( 3 )]
+position = Vector2( 1018.24, 307.922 )
+rotation = 1.5708
+scale = Vector2( 60, 1 )
+
+[node name="MenuBall" parent="." instance=ExtResource( 4 )]
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 311.757
+margin_top = 225.675
+margin_right = 681.757
+margin_bottom = 289.675
+custom_fonts/font = ExtResource( 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}

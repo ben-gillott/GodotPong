@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Kevin MacLeod Bit Bit Loop.mp3-eede51def6d2130f724342f4611502fb.mp3str"
+
+[deps]
+
+source_file="res://Sound/Kevin MacLeod Bit Bit Loop.mp3"
+dest_files=[ "res://.import/Kevin MacLeod Bit Bit Loop.mp3-eede51def6d2130f724342f4611502fb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
